@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#Dynamic" href="#<%=testID%>">
+        <%=title%>
+        <span class="badge pull-right dummyAttempts"><%=attempts%>/<%=totalattempt%></span>
+        </a>
+        </h4>
+    </div>
+    <div id="<%=testID%>" class="panel-collapse collapse">
+        <div class="panel-body">
+            <p><%=description%></p>
+            <%_.each(inputs,function (input){%>
+            <%if(input.type === "input") {%>
+            <%=input.title%> :<input value="<%=input.value%>" <%if(input.placeholder) {%>placeholder="input.placeholder"<%}%>/>
+            <%} else if (input.type === "textbox") {%>
+            <%=input.title%> :<textarea value="<%=input.value%>" <%if(input.placeholder) {%>placeholder="input.placeholder"<%}%>>
+            </textarea>
+            <%} else if(input.type === "radio") {%>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="input-group">
+                      <span class="input-group-addon ">
+                        <input value="<%=input.value%>" name="userInput" type="radio" <%if(input.placeholder) {%>placeholder="input.placeholder"<%}    %> class="pull-left"/>
+                        <%=input.title%>
+                      </span>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div>
+            <%} %>
+            <%})%>
+            <button type="submit" class="btn btn-default dummySubmit">Submit</button>
+            <p class="hide"><%=feedback%></p>
+        </div>
+    </div>
+</div>
